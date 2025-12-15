@@ -1,189 +1,152 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html><html lang="zh-CN">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="renderer" content="webkit">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <script type="text/javascript" src="/static/pixi.min.js"></script>
-  <script type="text/javascript" src="/static/main.js"></script>
-  <link rel="stylesheet" href="https://zyyo.net/usr/themes/ZYYO/static/css/font.css">
-  <title>murenyou</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>纸水 · 个人主页</title>
   <style>
-    canvas {
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -2;
-      pointer-events: none
-    }
-    a:hover,
-    a:link,
-    a:visited,
-    a:active,
-    a:focus {
-        text-decoration: none;
-    }
-
-    button,
-    input,
-    input:focus {
-        outline: none;
-        border: none;
-    }
-
-    a,
-    button,
-    input {
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
-
-    *{
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    * {
-      box-sizing: border-box;
-      -webkit-text-size-adjust: none
-    }
-
-    img {
-      border: 0;
-      vertical-align: middle
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      padding: 0;
-      border: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #eaeaea;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      width: 100vw;
-      background: radial-gradient(#619bff, #e0e0e3);
     }
-
-    .main {
-      width: 35%;
+    .card {
+      width: 90%;
+      max-width: 720px;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+    header {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 20px;
+      margin-bottom: 28px;
     }
-
-    @media screen and (max-width:1024px) {
-      .main { width: 45%; }
-    }
-
-    @media screen and (max-width:768px) {
-      .main { width: 50%; }
-    }
-
-    @media screen and (max-width:540px) {
-      .main { width: 60% !important; }
-    }
-
-    @media screen and (max-width:480px) {
-      .main { width: 90% !important; }
-    }
-
-    @media screen and (max-width:360px) {
-      .main { width: 100% !important; }
-    }
-
-    img.avatar {
-      border: 3px solid rgba(255, 255, 255, 0.8);
+    .avatar {
+      width: 88px;
+      height: 88px;
       border-radius: 50%;
-      box-shadow: 0 0px 20px 5px #e6e8ea;
-      transition: .4s ease-in-out;
-    }
-
-    h1 {
-      font-family: 'Noto Serif SC', serif;
-      color: #fff;
-      font-size: 1.8rem;
-      line-height: 2em;
-      font-weight: 800;
-    }
-
-    h2 {
-      margin: 0;
-      color: #ffffffa3;
-      padding-bottom: 45px;
-      font-size: 18px;
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-      display: inline-flex;
-      width: 100%;
-      justify-content: space-around;
-      border-bottom: 2px solid hsla(0, 0%, 100%, .1);
-      border-top: 2px solid hsla(0, 0%, 100%, .1);
-      height: 80px;
-      align-items: center;
-      max-width: 85%;
-    }
-
-    li {
-      width: 100%;
-      border-left: 1px solid hsla(0, 0%, 100%, .1);
-      border-right: 1px solid hsla(0, 0%, 100%, .1);
-      height: 40px;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all .2s;
+      font-size: 36px;
+      font-weight: 700;
+      color: #0f2027;
+      flex-shrink: 0;
     }
-
-    a {
-      font-size: 1.2rem;
-      color: #ffffff;
-      transition: all .2s;
-      cursor: pointer;
+    h1 {
+      font-size: 32px;
+      margin-bottom: 6px;
+      letter-spacing: 2px;
     }
-
-    a:hover {
-      color: #fff !important;
-      text-shadow: 0 0px 20px #ffffff;
+    .subtitle {
+      font-size: 14px;
+      color: #bcd7e6;
+    }
+    section {
+      margin-top: 26px;
+    }
+    section h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #9ad9ff;
+      letter-spacing: 1px;
+    }
+    p {
+      line-height: 1.8;
+      font-size: 15px;
+      color: #e6eef3;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .tag {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      font-size: 13px;
+    }
+    footer {
+      margin-top: 32px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .links a {
+      color: #9ad9ff;
+      text-decoration: none;
+      margin-right: 16px;
+      font-size: 14px;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .copyright {
+      font-size: 12px;
+      color: #9fb8c6;
     }
   </style>
 </head>
-
 <body>
-  <div class="main">
-    <img class="avatar" src="https://i.postimg.cc/wj97JMZf/mmexport1764783811930.jpg" width="130" height="130" alt="avatar">
-    <h1>纸水</h1>
-    <h2>wilm</h2>
+  <div class="card">
+    <header>
+      <div class="avatar">纸</div>
+      <div>
+        <h1>纸水</h1>
+        <div class="subtitle">个人主页 · 简单 / 克制 / 自由</div>
+      </div>
+    </header><section>
+  <h2>关于我</h2>
+  <p>
+    我叫 <strong>纸水</strong>。喜欢简洁的设计、克制的表达，以及有温度的技术。
+    相信「纸」的纯粹，也向往「水」的流动——在变化中保持本心。
+  </p>
+</section>
 
-    <ul>
-      <li><a <span>QQ:3265486213</span></a></li>
-    </ul>
+<section>
+  <h2>兴趣方向</h2>
+  <div class="tags">
+    <span class="tag">网页设计</span>
+    <span class="tag">前端开发</span>
+    <span class="tag">UI / UX</span>
+    <span class="tag">效率工具</span>
+    <span class="tag">极简主义</span>
+  </div>
+</section>
+
+<section>
+  <h2>座右铭</h2>
+  <p>
+    「心如止水，行若流水。」
+  </p>
+</section>
+
+<footer>
+  <div class="links">
+    <a href="#">GitHub</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="copyright">
+    © 2025 纸水 · All Rights Reserved
+  </div>
+</footer>
+
   </div>
 </body>
-
-<script>
- document.onkeydown = function(){
-    if (event.ctrlKey && window.event.keyCode==85){ return false; }
-    if (window.event && window.event.keyCode == 123) {
-        event.keyCode = 0;
-        event.returnValue = false;
-    }
- }
-
-document.body.oncontextmenu = function() {
-    self.event.returnValue = false
-};
-
-$(document).bind("contextmenu copy selectstart", function() {
-    return false;
-});
-</script>
 </html>
